@@ -1,10 +1,19 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 function Login() {
 
+  const navigate = useNavigate();
 
   const [view, setView] = useState("Login")
 
+
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/dashboard"); // 🔁 redirect user
+  };
 
   const handleForgot = ()=>{
     setView('fogotPassword')
@@ -47,6 +56,7 @@ function Login() {
 
 
         <button 
+         onClick={handleSubmit}
          className="w-[250px] py-3 bg-green-600 text-white text-lg rounded-xl font-medium font-sans mb-5 hover:bg-green-700 transition">
          {view=="Login" ? 'Sign In' : "Sign Up"}
         </button>

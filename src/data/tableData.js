@@ -1,0 +1,42 @@
+export const ticketData = [
+  {
+    id: 1234,
+    subject: "Login issue",
+    status: "In Progress",
+    supportBy: "Tech support",
+    date: "13/08/21",
+    rating: 0,
+  },
+  {
+    id: 1124,
+    subject: "New ticket issue",
+    status: "On hold",
+    supportBy: "Operation Team",
+    date: "14/08/21",
+    rating: 3,
+  },
+  {
+    id: 1224,
+    subject: "New request",
+    status: "Closed",
+    supportBy: "Tech support",
+    date: "13/08/21",
+    rating: 4,
+  },
+  {
+    id: 1244,
+    subject: "Ticket submission",
+    status: "In Progress",
+    supportBy: "Operation Team",
+    date: "14/08/21",
+    rating: 2,
+  },
+  {
+    id: 1114,
+    subject: "Login issue",
+    status: "In Progress",
+    supportBy: "Tech support",
+    date: "3/08/21",
+    rating: 3,
+  },
+];
