@@ -8,11 +8,23 @@ function Login() {
   const navigate = useNavigate();
 
   const [view, setView] = useState("Login")
+  const [userValue, setUserValue] = useState('') 
 
 
    const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/dashboard"); // 🔁 redirect user
+    const username = userValue;
+    const role = username.toLowerCase().includes("op") ? "operation" : "user"
+
+    localStorage.setItem("token","dummy-token");
+    localStorage.setItem("role", role);               // save role
+    localStorage.setItem("username", username);               // save role
+
+     if (role === "operation") {
+    navigate("/op-dashboard"); // your operational dashboard route
+    } else {
+    navigate("/dashboard"); // your user dashboard route
+    }
   };
 
   const handleForgot = ()=>{
@@ -35,6 +47,8 @@ function Login() {
         <input
           className="w-[350px] px-3 py-3 mb-5 text-lg border border-gray-500 rounded font-sans bg-white focus:outline-none"
           type="text"
+          value={userValue}
+          onChange={(e)=>setUserValue(e.target.value)}
           placeholder="Username"
         />
         <input
