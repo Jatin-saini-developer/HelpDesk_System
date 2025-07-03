@@ -9,6 +9,8 @@ import UserProfile from './pages/UserProfile'
 import UserInformation from './pages/UserInformation'
 import {  createBrowserRouter,  RouterProvider,} from "react-router";
 import OperationDashboard from './pages/operation/OperationDashboard'
+import TicketApproval from './pages/operation/TicketApproval'
+import MyTicketOP from './pages/operation/MyTicketOP'
 
 function App() {
 
@@ -40,6 +42,14 @@ function App() {
   {
     path:"/op-dashboard",
     element:<OperationDashboard/>
+  },
+  {
+    path:"/ticket-approval",
+    element:<TicketApproval/>
+  },
+  {
+    path:"/my-ticket",
+    element:<MyTicketOP/>
   }
   ]);
 

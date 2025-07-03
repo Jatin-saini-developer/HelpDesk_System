@@ -20,10 +20,10 @@ const SideBar = () => {
   }
   return (
     <div>
-        <aside className="w-56 bg-[#e5e5e5] p-4 flex flex-col min-h-[calc(100vh-96px)]">
+        <aside className="w-56 bg-[#e5e5e5] p-4 flex flex-col h-full min-h-[calc(100vh-96px)]">
           {role=="operation" ?(
         <>
-          <Link to="/dashboard" className="block py-2">Dashboard</Link>
+          <Link to="/op-dashboard" className="block py-2">Dashboard</Link>
           <Link to="/ticket-approval" className="block py-2">Ticket Approval</Link>
           <Link to="/my-ticket" className="block py-2">My Ticket</Link>
           <Link to="/performance" className="block py-2">Performance</Link>
