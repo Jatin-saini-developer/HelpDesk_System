@@ -1,6 +1,6 @@
 import React from "react";
 
-const ViewTicket = ({ ticket ,onClose }) => {if (!ticket) return null; 
+const ViewTicket = ({ ticket ,onClose, customButton}) => {if (!ticket) return null; 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 z-50">
       <div className="bg-white w-[500px] rounded shadow-lg p-6">
@@ -23,6 +23,11 @@ const ViewTicket = ({ ticket ,onClose }) => {if (!ticket) return null;
         </div>
 
         <div className="text-center mt-4">
+
+          {customButton}
+
+
+
           <button
             onClick={onClose}
             className="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded"

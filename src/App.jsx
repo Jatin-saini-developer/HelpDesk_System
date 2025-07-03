@@ -50,6 +50,10 @@ function App() {
   {
     path:"/my-ticket",
     element:<MyTicketOP/>
+  },
+  {
+    path:"/performance",
+    element: <Performance/>
   }
   ]);
 
@@ -59,13 +63,7 @@ function App() {
      
      <div>
       <RouterProvider router={router}>
-      {/* <Login/> */}
-      {/* <DashBoard/> */}
-      {/* <NewTicket/> */}
-      {/* <MyTicket/> */}
-      {/* <ViewTicket/> */}
-      {/* <UserProfile/> */}
-      {/* <UserInformation/> */}
+     
       </RouterProvider>
      </div>
 

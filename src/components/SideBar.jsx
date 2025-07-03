@@ -1,5 +1,7 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import { FaThLarge, FaTicketAlt, FaBriefcase } from "react-icons/fa";
+
 
 const SideBar = () => {
   const navigate = useNavigate()
@@ -37,13 +39,13 @@ const SideBar = () => {
               className='cursor-pointer text-lg'>Dashboard</button>
             </div>
             <div className="flex items-center space-x-2 cursor-pointer text-lg">
-              <i className="fa fa-ticket"></i>
+                <FaThLarge />
               <button 
               onClick={handleNewTicket}
               className='cursor-pointer text-lg'>New Ticket</button>
             </div>
             <div className="flex items-center space-x-2 cursor-pointer text-lg">
-              <i className="fa fa-briefcase"></i>
+                <FaTicketAlt />
               <button 
               onClick={handleMyTicket}
               className='cursor-pointer text-lg'>My Ticket</button>

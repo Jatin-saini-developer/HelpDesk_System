@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaSearch, FaUserFriends, FaDownload, FaEye } from "react-icons/fa";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import SideBar from "../../components/SideBar";
+import ViewTicket from "../ViewTicket";
+import UpdateTicket from "./UpdateTicket";
 
 const myTicketData = [
   { id: 1234, subject: "Login issue", category: "Access issue", priority: "High", date: "13/08/21", status: "In Progress" },
@@ -19,6 +21,20 @@ const statusStyles = {
 };
 
 const MyTicketOP = () => {
+
+ const [updateTicket, setUpdateTicket] = useState(false);
+  const handleUpdate = () => {
+    setUpdateTicket(true);
+    setShowTicket(false);
+
+  }
+
+  const [selectedTicket , setSelectedTicket] = useState(null);
+  const [showTicket, setShowTicket] = useState(false);
+  const handleTicketClick = (ticket) => {
+   setSelectedTicket(ticket);
+   setShowTicket(true);
+  }
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -107,6 +123,17 @@ const MyTicketOP = () => {
             </div>
           </div>
         </main>
+
+      {showTicket && (
+        <ViewTicket customButton={<button onClick={handleUpdate} className="bg-blue-500 text-white px-4 py-2 rounded">
+         Update
+        </button>} 
+        ticket={selectedTicket} 
+        onClose={() => setShowTicket(false)} />
+      )};
+      
+      {updateTicket && (<UpdateTicket onClose={() => setUpdateTicket(false)}  />)}
+
       </div>
       <Footer />
     </div>
