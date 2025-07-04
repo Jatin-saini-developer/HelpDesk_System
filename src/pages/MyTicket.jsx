@@ -5,16 +5,14 @@ import SideBar from "../components/SideBar";
 import { ticketData } from "../data/tableData";
 import ViewTicket from "./ViewTicket";
 
-
 const MyTicket = () => {
-
-  const [selectedTicket , setSelectedTicket] = useState(null);
+  const [selectedTicket, setSelectedTicket] = useState(null);
   const [showTicket, setShowTicket] = useState(false);
 
-  const handleTicketClick = (ticket)=>{
+  const handleTicketClick = (ticket) => {
     setSelectedTicket(ticket);
     setShowTicket(true);
-  }
+  };
 
   return (
     <div>
@@ -49,22 +47,44 @@ const MyTicket = () => {
               </thead>
 
               <tbody>
-                {ticketData.map((ticket)=>(
+                {ticketData.map((ticket) => (
                   <tr>
-                    <td  className="p-3 border"> 
-                     <a href="#" className="text-blue-600 underline" 
-                     onClick={(e)=>{e.preventDefault();
-                                    handleTicketClick(ticket) }}>
-                     {ticket.id}
-                     </a>
-                </td>
-                    <td  className="p-3 border">{ticket.subject}</td>
-                    <td  className="p-3 border "> <span className={`${ticket.status=="In Progress" ? "bg-green-500" :ticket.status=="On hold" ? "bg-blue-950" : ticket.status=="Closed" ?'bg-gray-800':''}`}>{ticket.status}</span></td>
-                    <td  className="p-3 border">{ticket.supportBy}</td>
-                    <td  className="p-3 border">{ticket.date}</td>
-                    <td  className="p-3 border">
-                     {"★".repeat(ticket.rating)}
-                     {"☆".repeat(5 - ticket.rating)}
+                    <td className="p-3 border">
+                      <a
+                        href="#"
+                        className="text-blue-600 underline"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleTicketClick(ticket);
+                        }}
+                      >
+                        {ticket.id}
+                      </a>
+                    </td>
+                    <td className="p-3 border">{ticket.subject}</td>
+                    <td className="p-3 border ">
+                      {" "}
+                      <span
+                        className={`px-2 py-1 text-xs font-semibold text-white rounded-full 
+    ${
+      ticket.status === "In Progress"
+        ? "bg-green-500"
+        : ticket.status === "On hold"
+        ? "bg-yellow-600"
+        : ticket.status === "Closed"
+        ? "bg-gray-600"
+        : "bg-gray-300"
+    }
+  `}
+                      >
+                        {ticket.status}
+                      </span>
+                    </td>
+                    <td className="p-3 border">{ticket.supportBy}</td>
+                    <td className="p-3 border">{ticket.date}</td>
+                    <td className="p-3 border">
+                      {"★".repeat(ticket.rating)}
+                      {"☆".repeat(5 - ticket.rating)}
                     </td>
                   </tr>
                 ))}
@@ -72,9 +92,12 @@ const MyTicket = () => {
             </table>
           </div>
 
-      {showTicket && (
-        <ViewTicket ticket={selectedTicket} onClose={() => setShowTicket(false)} />
-      )}
+          {showTicket && (
+            <ViewTicket
+              ticket={selectedTicket}
+              onClose={() => setShowTicket(false)}
+            />
+          )}
         </div>
       </div>
       <Footer />

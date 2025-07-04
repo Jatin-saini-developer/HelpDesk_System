@@ -2,88 +2,106 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 function Login() {
-
   const navigate = useNavigate();
 
-  const [view, setView] = useState("Login")
-  const [userValue, setUserValue] = useState('') 
+  const [view, setView] = useState("Login");
+  const [userValue, setUserValue] = useState("");
 
-
-   const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (view === "SignUp" || view === "fogotPassword") {
+      // You can add sign-up or forgot password logic here
+      return;
+    }
+
     const username = userValue;
-    const role = username.toLowerCase().includes("op") ? "operation" : "user"
+    const role = username.toLowerCase().includes("op") ? "operation" : "user";
 
-    localStorage.setItem("token","dummy-token");
-    localStorage.setItem("role", role);               // save role
-    localStorage.setItem("username", username);               // save role
+    localStorage.setItem("token", "dummy-token");
+    localStorage.setItem("role", role);
+    localStorage.setItem("username", username);
 
-     if (role === "operation") {
-    navigate("/op-dashboard"); // your operational dashboard route
+    if (role === "operation") {
+      navigate("/op-dashboard");
     } else {
-    navigate("/dashboard"); // your user dashboard route
+      navigate("/dashboard");
     }
   };
 
-  const handleForgot = ()=>{
-    setView('fogotPassword')
-  }
+  const handleForgot = () => {
+    setView("fogotPassword");
+  };
 
-  const handleSignUp= ()=>{
-    setView('SignUp')
-    console.log('sign up page')
-  }
+  const handleToggle = () => {
+    setView(view === "Login" ? "SignUp" : "Login");
+  };
 
   return (
     <div className="min-h-screen  flex items-center justify-center bg-[#2AF5FF] border-2 border-white">
       <div className="bg-[#b2e6e0] border-4 border-blue-500 rounded-md px-8 py-10 min-w-[450px] flex flex-col items-center shadow-md">
-        { (view === 'Login' || view === 'SignUp') &&  < >
-           <div className="text-3xl font-bold italic mb-8 text-center font-sans">
-          Helpdesk System
-        </div>
+        {(view === "Login" || view === "SignUp") && (
+          <>
+            <div className="text-3xl font-bold italic mb-8 text-center font-sans">
+              Helpdesk System
+            </div>
 
-        <input
-          className="w-[350px] px-3 py-3 mb-5 text-lg border border-gray-500 rounded font-sans bg-white focus:outline-none"
-          type="text"
-          value={userValue}
-          onChange={(e)=>setUserValue(e.target.value)}
-          placeholder="Username"
-        />
-        <input
-          className="w-[350px] px-3 py-3 mb-5 text-lg border border-gray-500 rounded font-sans bg-white focus:outline-none"
-          type="password"
-          placeholder="Password"
-        /> </>}
+            <input
+              className="w-[350px] px-3 py-3 mb-5 text-lg border border-gray-500 rounded font-sans bg-white focus:outline-none"
+              type="text"
+              value={userValue}
+              onChange={(e) => setUserValue(e.target.value)}
+              placeholder="Username"
+            />
+            <input
+              className="w-[350px] px-3 py-3 mb-5 text-lg border border-gray-500 rounded font-sans bg-white focus:outline-none"
+              type="password"
+              placeholder="Password"
+            />
+          </>
+        )}
 
-        {view=='fogotPassword' && <div>
-          <p>Don’t worry, Enter your email below and we will <br />
-             send you a link to change password. 
-          </p>
-        </div> } 
+        {view === "fogotPassword" && (
+          <div>
+            <p  className="mb-4 font-semibold text-gray-700">
+              Don’t worry,  Enter your email below and we will <br />
+              send you a link to change password.
+            </p>
+          </div>
+        )}
 
-        { (view=='SignUp' || view=='fogotPassword') && <input
-               className="w-[350px] px-3 py-3 mb-5 text-lg border border-gray-500 rounded font-sans bg-white focus:outline-none"
-               type="text"
-                placeholder="Email"/>}
+        {(view === "SignUp" || view === "fogotPassword") && (
+          <input
+            className="w-[350px] px-3 py-3 mb-5 text-lg border border-gray-500 rounded font-sans bg-white focus:outline-none"
+            type="text"
+            placeholder="Email"
+          />
+        )}
 
-
-        <button 
-         onClick={handleSubmit}
-         className="w-[250px] py-3 bg-green-600 text-white text-lg rounded-xl font-medium font-sans mb-5 hover:bg-green-700 transition">
-         {view=="Login" ? 'Sign In' : "Sign Up"}
+        <button
+          onClick={handleSubmit}
+          className="w-[250px] py-3 bg-green-600 text-white text-lg rounded-xl font-medium font-sans mb-5 hover:bg-green-700 transition"
+        >
+          {view === "Login" ? "Sign In" : "Sign Up"}
         </button>
+
         <div className="w-[350px] flex flex-row justify-between items-center mt-0">
-
-          <button onClick={handleForgot} type="button" className="text-red-500 text-xs font-sans cursor-pointer ml-1 bg-transparent border-none p-0 hover:underline focus:outline-none">
+          <button
+            onClick={handleForgot}
+            type="button"
+            className="text-red-500 text-xs font-sans cursor-pointer ml-1 bg-transparent border-none p-0 hover:underline focus:outline-none"
+          >
             Forgot Password
-            </button>
+          </button>
 
-
-          <button onClick={handleSignUp} type="button" className="text-black text-base font-sans cursor-pointer mr-1 bg-transparent border-none p-0 hover:underline focus:outline-none">
-           {view=="Login" ? 'Sign Up' : "Sign In"}
-            </button>
+          <button
+            onClick={handleToggle}
+            type="button"
+            className="text-black text-base font-sans cursor-pointer mr-1 bg-transparent border-none p-0 hover:underline focus:outline-none"
+          >
+            {view === "Login" ? "Sign Up" : "Sign In"}
+          </button>
         </div>
       </div>
     </div>

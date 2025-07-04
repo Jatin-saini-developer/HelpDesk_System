@@ -11,6 +11,7 @@ import {  createBrowserRouter,  RouterProvider,} from "react-router";
 import OperationDashboard from './pages/operation/OperationDashboard'
 import TicketApproval from './pages/operation/TicketApproval'
 import MyTicketOP from './pages/operation/MyTicketOP'
+import Performance from './pages/operation/Performance'
 
 function App() {
 
