@@ -7,7 +7,16 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
-  const navigate = useNavigate()
+   const navigate = useNavigate()
+
+  const handleLogout = ()=>{
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate('/')
+
+  }
+
+ 
 
   const handleUserClick= ()=>{
     navigate('/user')
@@ -28,7 +37,7 @@ const Header = () => {
           onClick={handleUserClick}
           className="ml-2 cursor-pointer font-semibold"><FaUser className=' w-[26px] h-[28px]'/></button>
 
-          <button className="ml-2 cursor-pointer font-semibold"><FaSignOutAlt className=' w-[26px] h-[28px]' /></button>
+          <button onClick={handleLogout} className="ml-2 cursor-pointer font-semibold"><FaSignOutAlt className=' w-[26px] h-[28px]' /></button>
         </div>
       </header>
     </div>

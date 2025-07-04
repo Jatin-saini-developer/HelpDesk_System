@@ -12,6 +12,7 @@ import OperationDashboard from './pages/operation/OperationDashboard'
 import TicketApproval from './pages/operation/TicketApproval'
 import MyTicketOP from './pages/operation/MyTicketOP'
 import Performance from './pages/operation/Performance'
+import ProtectedRoute from './utils/ProtectedRoute';
 
 function App() {
 
@@ -22,39 +23,71 @@ function App() {
   },
   {
      path: "/dashboard",
-    element: <DashBoard/>
+    element: (<ProtectedRoute>
+    <DashBoard/>
+    </ProtectedRoute>)
   },
   {
      path: "/newTicket",
-    element: <NewTicket/>
+    element:( <ProtectedRoute>
+      <NewTicket/>
+      </ProtectedRoute> )
   },
   {
      path: "/myTicket",
-    element: <MyTicket/>
+    element: (
+      <ProtectedRoute>
+        <MyTicket />
+      </ProtectedRoute>
+    )
   },
   {
      path: "/user",
-    element: <UserProfile/>
+    element: (
+      <ProtectedRoute>
+        <UserProfile />
+      </ProtectedRoute>
+    )
   },
   {
      path: "/userInformation",
-    element: <UserInformation/>
+    element: (
+      <ProtectedRoute>
+        <UserInformation />
+      </ProtectedRoute>
+    )
   },
   {
     path:"/op-dashboard",
-    element:<OperationDashboard/>
+    element:(
+      <ProtectedRoute>
+        <OperationDashboard />
+      </ProtectedRoute>
+    )
   },
   {
     path:"/ticket-approval",
-    element:<TicketApproval/>
+    element:(
+      <ProtectedRoute>
+        <TicketApproval />
+      </ProtectedRoute>
+    )
   },
   {
     path:"/my-ticket",
-    element:<MyTicketOP/>
+    element: (
+      <ProtectedRoute>
+        <MyTicketOP />
+      </ProtectedRoute>
+    )
   },
   {
     path:"/performance",
-    element: <Performance/>
+    element:  (
+      <ProtectedRoute>
+        <Performance />
+      </ProtectedRoute>
+    )
   }
   ]);
 
