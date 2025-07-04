@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +9,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
-  // Redirect to dashboard if already logged in
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
