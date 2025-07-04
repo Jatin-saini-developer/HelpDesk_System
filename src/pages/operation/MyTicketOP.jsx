@@ -21,20 +21,19 @@ const statusStyles = {
 };
 
 const MyTicketOP = () => {
-
- const [updateTicket, setUpdateTicket] = useState(false);
+  const [updateTicket, setUpdateTicket] = useState(false);
   const handleUpdate = () => {
     setUpdateTicket(true);
     setShowTicket(false);
+  };
 
-  }
-
-  const [selectedTicket , setSelectedTicket] = useState(null);
+  const [selectedTicket, setSelectedTicket] = useState(null);
   const [showTicket, setShowTicket] = useState(false);
   const handleTicketClick = (ticket) => {
-   setSelectedTicket(ticket);
-   setShowTicket(true);
-  }
+    setSelectedTicket(ticket);
+    setShowTicket(true);
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -88,13 +87,11 @@ const MyTicketOP = () => {
               <tbody>
                 {myTicketData.map((ticket, index) => (
                   <tr key={ticket.id} className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}>
-                    
                     <td className="px-4 py-2 text-blue-600 underline cursor-pointer">
-                     <button onClick={() => handleTicketClick(ticket)}>
-                     {ticket.id}
-                     </button>
-                   </td>
-
+                      <button onClick={() => handleTicketClick(ticket)}>
+                        {ticket.id}
+                      </button>
+                    </td>
                     <td className="px-4 py-2">{ticket.subject}</td>
                     <td className="px-4 py-2">{ticket.category}</td>
                     <td className="px-4 py-2">{ticket.priority}</td>
@@ -124,16 +121,22 @@ const MyTicketOP = () => {
           </div>
         </main>
 
-      {showTicket && (
-        <ViewTicket customButton={<button onClick={handleUpdate} className="bg-blue-500 text-white px-4 py-2 rounded">
-         Update
-        </button>} 
-        ticket={selectedTicket} 
-        onClose={() => setShowTicket(false)} />
-      )};
-      
-      {updateTicket && (<UpdateTicket onClose={() => setUpdateTicket(false)}  />)}
+        {showTicket && (
+          <ViewTicket
+            customButton={
+              <button
+                onClick={handleUpdate}
+                className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2 rounded shadow"
+              >
+                Update Ticket
+              </button>
+            }
+            ticket={selectedTicket}
+            onClose={() => setShowTicket(false)}
+          />
+        )}
 
+        {updateTicket && <UpdateTicket onClose={() => setUpdateTicket(false)} />}
       </div>
       <Footer />
     </div>
